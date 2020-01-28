@@ -1,16 +1,18 @@
-// import Pokemon from ('./pokemon');
-// import Trainer from ('./trainer');
+import Pokemon from './pokemon';
+import Trainer from './trainer';
+
+
 
 class Game {
-  constructor(height, width) {
+  constructor(ctx, canvas) {
+    this.ctx = ctx;
+    this.cavas = canvas;
     this.pokemon = [];
     this.trainer = null;
-    this.addPokemon();
-    this.DIM_X = height;
-    this.DIM_Y = width;
-    this.NUM_POKEMON = 0;
+    this.NUM_POKEMON = 1;
     this.BG_COLOR = "#37d437";
     this.FPS = 60;
+    this.addPokemon();
   }
   
   add(object) {
@@ -23,7 +25,7 @@ class Game {
 
   addPokemon() {
     for (let i = 0; i < this.NUM_POKEMON; i++) {
-      this.pokemon.push(new Pokemon(this.randomPosition(), this));
+      this.pokemon.push(new Pokemon(this.ctx, this.canvas, "test word", this.randomPosition()[0], this.randomPosition()[1], true));
     }
   }
 
@@ -59,18 +61,13 @@ class Game {
 
   
   draw(ctx) {
-    ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
-    ctx.fillStyle = this.BG_COLOR;
-    ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
     this.allObjects().forEach(function(object) {
       object.draw(ctx);
     });
   }
 
   randomPosition() {
-    return {
-      pos: [Math.random() * this.DIM_X, Math.random() * this.DIM_Y]
-    };
+    return [Math.random() * 700, Math.random() * 700];
   }
 
   remove(){
