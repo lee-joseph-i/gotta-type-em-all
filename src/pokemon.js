@@ -1,6 +1,7 @@
-const Util = require('./utils.js');
+import Util from './utils';
+
 class Pokemon {
 
 }
 
-module.exports = Pokemon;
+export default Pokemon;

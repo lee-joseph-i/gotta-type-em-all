@@ -1,0 +1,21 @@
+{
+  "name": "gotta_type_em_all",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "firebase serve --only hosting",
+    "webpack": "webpack --watch --mode=development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lee-joseph-i/gotta-type-em-all.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lee-joseph-i/gotta-type-em-all/issues"
+  },
+  "homepage": "https://github.com/lee-joseph-i/gotta-type-em-all#readme"
+}
