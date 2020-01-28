@@ -1,17 +1,45 @@
 import Pokemon from './pokemon';
 import Trainer from './trainer';
+import Grass from './grass';
 
-
+const POSITIONS = [
+  // [100, 100],
+  // [100, 200],
+  // [100, 300],
+  // [100, 400],
+  [200, 100],
+  [200, 200],
+  [200, 300],
+  [200, 400],
+  [300, 100],
+  [300, 200],
+  [300, 300],
+  [300, 400],
+  [400, 100],
+  [400, 200],
+  [400, 300],
+  [400, 400],
+  [500, 100],
+  [500, 200],
+  [500, 300],
+  [500, 400],
+  [600, 100],
+  [600, 200],
+  [600, 300],
+  [600, 400],
+];
 
 class Game {
   constructor(ctx, canvas) {
     this.ctx = ctx;
-    this.cavas = canvas;
+    this.canvas = canvas;
+    this.grass = [];
     this.pokemon = [];
     this.trainer = null;
-    this.NUM_POKEMON = 1;
+    this.NUM_POKEMON = 9;
     this.BG_COLOR = "#37d437";
     this.FPS = 60;
+    this.addGrass();
     this.addPokemon();
   }
   
@@ -23,9 +51,30 @@ class Game {
     }
   }
 
+  addGrass(){
+    for (let i = 0; i < POSITIONS.length; i++) {
+      this.grass.push(
+        new Grass(
+          this.ctx,
+          this.canvas,
+          POSITIONS[i],        
+          )
+      );
+    }
+  }
+
   addPokemon() {
-    for (let i = 0; i < this.NUM_POKEMON; i++) {
-      this.pokemon.push(new Pokemon(this.ctx, this.canvas, "test word", this.randomPosition()[0], this.randomPosition()[1], true));
+    for (let i = 0; i < POSITIONS.length; i++) {
+      this.pokemon.push(
+        new Pokemon(
+          this.ctx,
+          this.canvas,
+          "test word",
+          POSITIONS[i][0],
+          POSITIONS[i][1],
+          true
+        )
+      );
     }
   }
 
@@ -54,20 +103,21 @@ class Game {
 
   allObjects() {
     if(this.trainer !== null){
-      return [].concat(this.pokemon, this.trainer);
+      return [].concat(this.grass, this.pokemon, this.trainer);
     }
-    return this.pokemon;
+    return [].concat(this.grass, this.pokemon);
   }
 
   
   draw(ctx) {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
     this.allObjects().forEach(function(object) {
       object.draw(ctx);
     });
   }
 
   randomPosition() {
-    return [Math.random() * 700, Math.random() * 700];
+    return [Math.random() * 500, Math.random() * 500];
   }
 
   remove(){
