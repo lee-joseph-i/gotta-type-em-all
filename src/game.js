@@ -2,12 +2,12 @@
 // import Trainer from ('./trainer');
 
 class Game {
-  constructor() {
+  constructor(height, width) {
     this.pokemon = [];
     this.trainer = null;
     this.addPokemon();
-    this.DIM_X = 1000;
-    this.DIM_Y = 1000;
+    this.DIM_X = height;
+    this.DIM_Y = width;
     this.NUM_POKEMON = 0;
     this.BG_COLOR = "#37d437";
     this.FPS = 60;
