@@ -16,3 +16,15 @@
   background-image: url("../sprites/tall-grass-adjusted.png")
   
 }
+
+#pokemon-input{
+  position:absolute;
+  left:323px;
+  top:600px;
+  width:250px;
+  text-align: center;
+  font-size: 20px;
+  color: rgb(94, 94, 94);
+  border: 1px solid black;
+  
+}
