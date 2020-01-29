@@ -35,6 +35,7 @@ class Game {
     this.canvas = canvas;
     this.grass = [];
     this.pokemon = [];
+    this.pokemonCount = 0;
     this.trainer = null;
     this.NUM_POKEMON = 9;
     this.BG_COLOR = "#37d437";
@@ -69,13 +70,18 @@ class Game {
         new Pokemon(
           this.ctx,
           this.canvas,
-          "test word",
           POSITIONS[i][0],
           POSITIONS[i][1],
           true
         )
       );
+      this.pokemonCount += 1;
+      console.log(this.pokemonCount)
     }
+
+    let randomEncounter = Math.floor(Math.random() * Math.floor(POSITIONS.length));
+    console.log(randomEncounter)
+
   }
 
   // addTrainer(){
@@ -97,8 +103,23 @@ class Game {
     this.moveObject(delta);
   }
 
+  throwTypeBall(typeBall){
+    this.pokemon.forEach( poke => {
+      console.log(poke.poke.name)
+      if (typeBall.toLowerCase() === poke.poke.name){
+        console.log("true!")
+       this.pokemon.splice(this.pokemon.indexOf(poke), 1);
+      }
+    })
+  }
+
   removePokemon() {
-    this.pokemon.splice(j, 1);
+    document.getElementById("pokemon-input").onkeydown = function(e) {
+      if (e.keyCode == 13) {
+       this.pokmeon.splice(this.pokmeon.indexOf(this.pokemon), 1);
+      }
+    };
+    // this.pokmeon.splice(this.pokmeon.indexOf(this.pokemon), 1);
   }
 
   allObjects() {
@@ -108,7 +129,6 @@ class Game {
     return [].concat(this.grass, this.pokemon);
   }
 
-  
   draw(ctx) {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
     this.allObjects().forEach(function(object) {
@@ -116,19 +136,11 @@ class Game {
     });
   }
 
-  randomPosition() {
-    return [Math.random() * 500, Math.random() * 500];
-  }
+  // randomPosition() {
+  //   return [Math.random() * 500, Math.random() * 500];
+  // }
 
-  remove(){
-    if (object instanceof Pokemon) {
-      this.pokemon.splice(this.pokemon.indexOf(object), 1);
-    } else if (object instanceof Trainer) {
-      this.trainer.splice(this.trainer.indexOf(object), 1);
-    } else {
-      throw new Error("unknown type of object");
-    }
-  };
+
 };
 
 export default Game;

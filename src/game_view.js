@@ -10,28 +10,24 @@ class GameView{
     this.delta;
   };
   
+  handleInput(){
+    let that = this;
+    let input = document.getElementById("pokemon-input");
+    input.onkeydown = function(e) {
+      if (e.keyCode == 13) {
+        that.game.throwTypeBall(e.currentTarget.value)
+        input.value = '';
+      }
+    };
+  }
+
   start(){
+    this.handleInput();
     this.lastTime = 0;
     // start the animation
     requestAnimationFrame(this.animate.bind(this));
 
   };
-
-  // animate(time){
-  //   const timeDelta = time - this.lastTime;
-
-  //   // this.game.step(timeDelta); //move pokemon, doesn't work yet
-  //   this.game.draw(this.ctx);
-  //   this.lastTime = time;
-
-  //   // every call to animate requests causes another call to animate
-  //   requestAnimationFrame(this.animate.bind(this));
-
-  //   // setInterval( () => {
-  //   //     this.game.draw(this.ctx);
-  //   //     this.lastTime = time;
-  //   // }, 1000 / 40)
-  // }
   
   animate() {
     requestAnimationFrame(this.animate.bind(this));

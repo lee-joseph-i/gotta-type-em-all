@@ -10,12 +10,11 @@
   align-content: center;
   /* height: 500px; */
 }
-
+/* 
 .canvas-class{
   background-color: rgb(235, 204, 103);
-  background-image: url("../sprites/tall-grass-adjusted.png")
-  
-}
+  background-image: url("../sprites/tall-grass-adjusted.png");
+} */
 
 #pokemon-input{
   position:absolute;

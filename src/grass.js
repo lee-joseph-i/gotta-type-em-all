@@ -14,7 +14,6 @@ class Grass {
 
   draw() {
     // this.ctx.clearRect(this.x, this.y, this.poke.shift1, this.poke.shift1)
-    console.log("test!")
     this.ctx.drawImage(
       this.grassImg,
       0,
