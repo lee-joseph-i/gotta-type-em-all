@@ -3,9 +3,10 @@ import Game from './game';
 import POKEDEX from './pokedex';
 
 class Pokemon {
-  constructor(ctx, canvas, id, x, y){
+  constructor(ctx, canvas, game, id, x, y){
     this.ctx = ctx;
     this.canvas = canvas;
+    this.game = game;
     this.poke = id;
     this.x = x;
     this.y = y;
@@ -13,7 +14,7 @@ class Pokemon {
     // this.dy = 0;
     this.shift = 0;
     this.shift2 = 0;
-    this.startEscapeTimer();
+    // this.startEscapeTimer();
     this.pokeImg = new Image();
     this.pokeImg.src = this.poke.src
 
@@ -44,11 +45,13 @@ class Pokemon {
     }
   }
 
-  startEscapeTimer(){
-    setTimeout( () => {
-      
-    }, this.poke.escapeTimer);
-  }
+  // startEscapeTimer(){
+  //   console.log(`${this.poke.name}'s escape timer is ${this.poke.escapeTimer}`)
+  //   setTimeout( () => {
+  //     this.game.removePokemon(this);
+  //     this.game.pokemonEscapeCount +=1;
+  //   }, this.poke.escapeTimer);
+  // }
 }
 
 export default Pokemon;

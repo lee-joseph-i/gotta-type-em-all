@@ -44,7 +44,6 @@ class Game {
     this.trainer = null;
     this.BG_COLOR = "#37d437";
     this.FPS = 60;
-    this.timer = null;
     this.addGrass();
     this.addPokemon();
   }
@@ -72,6 +71,7 @@ class Game {
     let poke = new Pokemon(
       this.ctx,
       this.canvas,
+      this,
       POKEDEX[pokeid],
       pos[0],
       pos[1]
@@ -96,8 +96,7 @@ class Game {
 
   addPokemon() {
     let allPositions = POSITIONS.length;
-    let timer = Math.floor(Math.random() * 400) + 100;
-    console.log(POSITIONS.length)
+    let timer = Math.floor(Math.random() * 0) + 2000;
     let spawnPoke = setTimeout(() => {
       if (POSITIONS.length > 0) {
         let poke = this.generatePoke();
@@ -115,26 +114,58 @@ class Game {
       if (typeBall.toLowerCase() === poke.poke.name) {
         this.removePokemon(poke);
         this.pokemonCatchCount += 1;
-        clearTimeout(this.timer);
         break;
       }
     }
   }
 
   escape(poke) {
-    this.timer = setTimeout(() => {
+    // console.log(`before timeout: ${poke.poke.name}`)
+    setTimeout(() => {
+          // console.log(`after timeout: ${poke.poke.name}`);
+      // if(this.removePokemon(poke)){
+
+      // }
       this.removePokemon(poke);
       this.pokemonEscapeCount += 1;
       // penalty logic goes here
     }, poke.poke.escapeTimer);
   }
 
+  // removePokemon(poke) {
+  //   console.log("START")
+  //   console.log("the poke argument")
+  //   console.log(poke)
+  //   console.log(`pokemon in argument: ${poke.poke.name}`)
+  //   console.log(`the array:`)
+  //   console.log(this.pokemon)
+  //   let pokeIndex = this.pokemon.indexOf(poke);
+  //   console.log(`the index of the pokemon: ${pokeIndex}`)
+  //   console.log("END")
+  //   this.pokemon.splice(pokeIndex, 1);
+  //   this.pokemonWildCount -= 1;
+  //   POSITIONS.push([poke.x, poke.y]);
+  //   availablePoke.push(poke.poke.id);
+  //   return true;
+  // }
   removePokemon(poke) {
-    let pokeIndex = this.pokemon.indexOf(poke);
+    let pokeName = poke.poke.name;
+    let pokeIndex;
+    for(let i = 0; i < this.pokemon.length; i++){
+      console.log(this.pokemon[i].poke.name);
+      console.log(pokeName)
+      if(this.pokemon[i].poke.name === pokeName){
+        pokeIndex = i;
+        break;
+      };
+    };
+        // console.log(`the index of the pokemon: ${pokeIndex}`);
+
     this.pokemon.splice(pokeIndex, 1);
     this.pokemonWildCount -= 1;
     POSITIONS.push([poke.x, poke.y]);
     availablePoke.push(poke.poke.id);
+    return true;
   }
   // removePokemon(poke) {
   //   let pokeIndex = this.pokemon.indexOf(poke);
@@ -170,7 +201,7 @@ class Game {
     //research draw efficiency
     this.ctx.beginPath();
     this.ctx.fillStyle = "white";
-    this.ctx.font = 'bold 22px "Arial"';
+    this.ctx.font = 'bold 20px "Arial"';
     this.ctx.fillText(`Pokemon Caught: ${this.pokemonCatchCount}`, this.canvas.width - 240, 50);
     this.ctx.fillText(`Pokemon Escaped: ${this.pokemonEscapeCount}`, this.canvas.width - 240, 80);
     this.ctx.fill();
