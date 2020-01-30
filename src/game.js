@@ -30,8 +30,6 @@ const POSITIONS = [
   [600, 400],
 ];
 
-// const availablePoke = [0,1,2,3,4,5,6,7,8,9,10,11,12];
-// const availablePoke = [11,12,13,14,15,16,17,18,19,20,21,22,23,24,25];
 const availablePoke = Object.keys(POKEDEX);
 
 class Game {
@@ -98,16 +96,16 @@ class Game {
 
   addPokemon() {
     let allPositions = POSITIONS.length;
-    let timer = Math.floor(Math.random() * 5000) + 100;
-    console.log(timer)
+    let timer = Math.floor(Math.random() * 400) + 100;
+    console.log(POSITIONS.length)
     let spawnPoke = setTimeout(() => {
-      if (availablePoke.length > 0) {
+      if (POSITIONS.length > 0) {
         let poke = this.generatePoke();
         this.pokemon.push(poke);
         this.escape(poke);
         this.pokemonWildCount += 1;
-        this.addPokemon();
       }
+      this.addPokemon();
     }, timer);
   }
 

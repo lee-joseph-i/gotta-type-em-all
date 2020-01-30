@@ -304,7 +304,7 @@ const POKEDEX = {
     escapeTimer: 7000,
   },
   19: {
-    id: 13,
+    id: 19,
     name: "dodrio",
     src: "../assets/sprites/dodrio-open.png",
     src2: "../assets/sprites/dodrio-idle.png",

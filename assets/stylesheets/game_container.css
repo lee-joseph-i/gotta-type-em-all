@@ -8,13 +8,8 @@
   justify-content: center;
   align-items: center;
   align-content: center;
-  /* height: 500px; */
-};
-/* 
-.canvas-class{
-  background-color: rgb(235, 204, 103);
-  background-image: url("../sprites/tall-grass-adjusted.png");
-} */
+}
+
 
 #pokemon-input{
   position:absolute;
@@ -25,5 +20,4 @@
   font-size: 20px;
   color: rgb(94, 94, 94);
   border: 1px solid black;
-  
-};
+}
