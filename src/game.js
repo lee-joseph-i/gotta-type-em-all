@@ -4,10 +4,6 @@ import Grass from './grass';
 import POKEDEX from './pokedex';
 
 const POSITIONS = [
-  // [100, 100],
-  // [100, 200],
-  // [100, 300],
-  // [100, 400],
   [200, 100],
   [200, 200],
   [200, 300],
@@ -78,30 +74,15 @@ class Game {
     );
     return poke;
   }
-  // generatePoke(){
-  //   let randomIdx = Math.floor(Math.random() * Math.floor(Object.values(POKEDEX).length));
-  //   let pos = this.generateSpawnPoint();
-  //   console.log(randomIdx);
-  //   console.log(`${Object.values(POKEDEX).length}`)
-  //   let poke = new Pokemon(
-  //     this.ctx,
-  //     this.canvas,
-  //     POKEDEX[randomIdx],
-  //     pos[0],
-  //     pos[1]
-  //   );
-  //   delete POKEDEX[randomIdx];
-  //   return poke;
-  // };
 
   addPokemon() {
     let allPositions = POSITIONS.length;
-    let timer = Math.floor(Math.random() * 0) + 2000;
+    let timer = Math.floor(Math.random() * 0) + 1000;
     let spawnPoke = setTimeout(() => {
       if (POSITIONS.length > 0) {
         let poke = this.generatePoke();
         this.pokemon.push(poke);
-        this.escape(poke);
+        // this.escape(poke);
         this.pokemonWildCount += 1;
       }
       this.addPokemon();
@@ -112,6 +93,7 @@ class Game {
     for (let i = 0; i < this.pokemon.length; i++) {
       let poke = this.pokemon[i];
       if (typeBall.toLowerCase() === poke.poke.name) {
+        clearTimeout(poke.escapeTimer);
         this.removePokemon(poke);
         this.pokemonCatchCount += 1;
         break;
@@ -119,61 +101,21 @@ class Game {
     }
   }
 
-  escape(poke) {
-    // console.log(`before timeout: ${poke.poke.name}`)
-    setTimeout(() => {
-          // console.log(`after timeout: ${poke.poke.name}`);
-      // if(this.removePokemon(poke)){
-
-      // }
-      this.removePokemon(poke);
-      this.pokemonEscapeCount += 1;
-      // penalty logic goes here
-    }, poke.poke.escapeTimer);
-  }
-
-  // removePokemon(poke) {
-  //   console.log("START")
-  //   console.log("the poke argument")
-  //   console.log(poke)
-  //   console.log(`pokemon in argument: ${poke.poke.name}`)
-  //   console.log(`the array:`)
-  //   console.log(this.pokemon)
-  //   let pokeIndex = this.pokemon.indexOf(poke);
-  //   console.log(`the index of the pokemon: ${pokeIndex}`)
-  //   console.log("END")
-  //   this.pokemon.splice(pokeIndex, 1);
-  //   this.pokemonWildCount -= 1;
-  //   POSITIONS.push([poke.x, poke.y]);
-  //   availablePoke.push(poke.poke.id);
-  //   return true;
-  // }
   removePokemon(poke) {
     let pokeName = poke.poke.name;
-    let pokeIndex;
     for(let i = 0; i < this.pokemon.length; i++){
-      console.log(this.pokemon[i].poke.name);
-      console.log(pokeName)
+      console.log(poke.poke.name)
+      console.log(this.pokemon[i].poke.name)
       if(this.pokemon[i].poke.name === pokeName){
-        pokeIndex = i;
+        this.pokemon.splice(i, 1);
         break;
       };
     };
-        // console.log(`the index of the pokemon: ${pokeIndex}`);
-
-    this.pokemon.splice(pokeIndex, 1);
     this.pokemonWildCount -= 1;
     POSITIONS.push([poke.x, poke.y]);
     availablePoke.push(poke.poke.id);
     return true;
   }
-  // removePokemon(poke) {
-  //   let pokeIndex = this.pokemon.indexOf(poke);
-  //   this.pokemon.splice(pokeIndex, 1);
-  //   this.pokemonWildCount -= 1;
-  //   POSITIONS.push([poke.x, poke.y]);
-  //   POKEDEX[poke.poke.id] = poke;
-  // }
 
   // addTrainer(){
   //   const trainer = new Trainer({

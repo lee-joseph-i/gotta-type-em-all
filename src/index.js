@@ -29,3 +29,4 @@ window.addEventListener('DOMContentLoaded', () => {
 //animating and connecting multiple spritesheets 
 //organizing spritesheets
 //refactoring setinterval to requestAnimationFrame
+// freaken stopping the escape timeout for individual pokemon. this would cause some serious bugs if the user "catches" and clears the pokemon before the settimout occurs.

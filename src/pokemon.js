@@ -20,6 +20,9 @@ class Pokemon {
 
     this.pokeImg2 = new Image();
     this.pokeImg2.src = this.poke.src2
+
+    this.escapeTimer = null;
+    this.startEscapeTimer();
   }
   
   draw(){
@@ -45,13 +48,15 @@ class Pokemon {
     }
   }
 
-  // startEscapeTimer(){
-  //   console.log(`${this.poke.name}'s escape timer is ${this.poke.escapeTimer}`)
-  //   setTimeout( () => {
-  //     this.game.removePokemon(this);
-  //     this.game.pokemonEscapeCount +=1;
-  //   }, this.poke.escapeTimer);
-  // }
+  startEscapeTimer(){
+    // console.log('test')
+    this.escapeTimer = setTimeout( () => {
+      // console.log(this)
+      // console.log(this.poke.name)
+      this.game.removePokemon(this);
+      this.game.pokemonEscapeCount +=1;
+    }, this.poke.escapeTimer);
+  }
 }
 
 export default Pokemon;
