@@ -4,10 +4,11 @@ class GameView {
     this.game = game;
     this.score = game.pokemonCatchCount;
     this.fps = 36;
+    this.interval = 1000 / this.fps;
     this.now;
     this.then = Date.now();
-    this.interval = 1000 / this.fps;
     this.delta;
+    this.gameOver = false;
   }
 
   handleInput() {
@@ -28,15 +29,23 @@ class GameView {
     requestAnimationFrame(this.animate.bind(this));
   }
 
+  gameOver(){
+    if (this.player.health <= 0) {
+      this.player.health = 0;
+      this.player.drawHealth();
+      clearInterval(window.intervalId);
+      cancelAnimationFrame(request);
+      this.gameOver();
+    }
+  }
+
   animate() {
     requestAnimationFrame(this.animate.bind(this));
-
     this.now = Date.now();
     this.delta = this.now - this.then;
     if (this.delta > this.interval) {
       this.then = this.now - (this.delta % this.interval);
       this.game.draw(this.ctx);
-
     }
   }
 

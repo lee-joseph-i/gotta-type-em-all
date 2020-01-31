@@ -2,27 +2,23 @@ import GameView from './game_view';
 import Game from './game';
 
 window.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM Loaded.');
-  console.log('Webpack is good.')
-  const canvas = document.getElementById("game-canvas");
-  const ctx = canvas.getContext("2d");
-  canvas.height = 700;
-  canvas.width = 900;
+  
+  // game canvas
+  const gameCanvas = document.getElementById("game-canvas");
+  const gameCtx = gameCanvas.getContext("2d");
+  gameCanvas.height = 700;
+  gameCanvas.width = 900;
+
+  const game = new Game(gameCtx, gameCanvas, gameCanvas.height, gameCanvas.width);
+  new GameView(game, gameCtx).start();
 
 
-    let img = new Image();
+  //menu canvas
+    const menuCanvas = document.getElementById("menu-canvas");
+    const menuCtx = menuCanvas.getContext("2d");
+    menuCanvas.height = 700;
+    menuCanvas.width = 900;
 
-    img.src = "../assets/sprites/tall-grass-adjusted.png";
-    img.onload = function() {
-      // create pattern
-      var ptrn = ctx.createPattern(img, "repeat"); // Create a pattern with this image, and set it to "repeat".
-      ctx.fillStyle = ptrn;
-      ctx.fillRect(0, 0, canvas.width, canvas.height - 100); // context.fillRect(x, y, width, height);
-    };
-
-
-  const game = new Game(ctx, canvas, canvas.height, canvas.width);
-  new GameView(game, ctx).start();
 })
 
 //challenges (add a README later):
@@ -30,3 +26,6 @@ window.addEventListener('DOMContentLoaded', () => {
 //organizing spritesheets
 //refactoring setinterval to requestAnimationFrame
 // freaken stopping the escape timeout for individual pokemon. this would cause some serious bugs if the user "catches" and clears the pokemon before the settimout occurs.
+
+
+// use ctx.save(), ctx.clip(), ctx.restore() for spotlight effect.

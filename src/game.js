@@ -3,27 +3,31 @@ import Trainer from './trainer';
 import Grass from './grass';
 import POKEDEX from './pokedex';
 
+const TRAINER_POSITIONS = {
+  forest: [520, 130],
+};
+
 const POSITIONS = [
-  [200, 100],
-  [200, 200],
-  [200, 300],
-  [200, 400],
-  [300, 100],
-  [300, 200],
-  [300, 300],
-  [300, 400],
-  [400, 100],
-  [400, 200],
-  [400, 300],
-  [400, 400],
-  [500, 100],
-  [500, 200],
-  [500, 300],
-  [500, 400],
-  [600, 100],
-  [600, 200],
-  [600, 300],
-  [600, 400],
+  // [200, 250],
+  [210, 320],
+  [170, 420],
+  [120, 520],
+  // [300, 250],
+  [330, 330],
+  [280, 420],
+  [230, 520],
+  // [400, 250],
+  [440, 320],
+  [390, 420],
+  [340, 520],
+  // [500, 250],
+  [550, 320],
+  [500, 420],
+  [450, 520],
+  // [600, 250],
+  [660, 320],
+  [610, 420],
+  [560, 520],
 ];
 
 const availablePoke = Object.keys(POKEDEX);
@@ -34,14 +38,15 @@ class Game {
     this.canvas = canvas;
     this.grass = [];
     this.pokemon = [];
+    this.trainer = [];
     this.pokemonWildCount = 0;
     this.pokemonCatchCount = 0;
     this.pokemonEscapeCount = 0;
-    this.trainer = null;
     this.BG_COLOR = "#37d437";
     this.FPS = 60;
     this.addGrass();
     this.addPokemon();
+    this.addTrainer();
   }
 
   addGrass() {
@@ -117,14 +122,16 @@ class Game {
     return true;
   }
 
-  // addTrainer(){
-  //   const trainer = new Trainer({
-  //     pos: this.randomPosition(),
-  //     game: this
-  //   });
-  //   this.add(trainer);
-  //   return trainer;
-  // }
+  addTrainer(){
+    let trainer = new Trainer(
+      this.ctx,
+      this.canvas,
+      TRAINER_POSITIONS["forest"],
+    );
+    console.log(trainer)
+    this.trainer.push(trainer);
+    return trainer;
+  }
 
   allObjects() {
     if (this.trainer !== null) {
@@ -134,6 +141,7 @@ class Game {
   }
 
   draw(ctx) {
+    this.trainer[0].cycle++
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.allObjects().forEach(function(object) {
       object.draw(ctx);
@@ -142,13 +150,29 @@ class Game {
     //below can be wrapped into a "draw score" function. 
     //research draw efficiency
     this.ctx.beginPath();
-    this.ctx.fillStyle = "white";
     this.ctx.font = 'bold 20px "Arial"';
+    this.ctx.fillStyle = "white";
     this.ctx.fillText(`Pokemon Caught: ${this.pokemonCatchCount}`, this.canvas.width - 240, 50);
+    if (this.pokemonEscapeCount < 7){
+      this.ctx.fillStyle = "white";
+    } else if (this.pokemonEscapeCount > 5 && this.pokemonEscapeCount < 9) {
+      this.ctx.fillStyle = "yellow";
+    } else {
+      this.ctx.fillStyle = "red";
+    }
     this.ctx.fillText(`Pokemon Escaped: ${this.pokemonEscapeCount}`, this.canvas.width - 240, 80);
     this.ctx.fill();
     this.ctx.closePath();
-  
+    ///////////
+
+    if (this.pokemonCatchCount >= 10) {
+      this.player.health = 10;
+      clearInterval(window.intervalId);
+      // cancelAnimationFrame(request);
+      // .gameOver();
+    }
+
+
   }
 };
 
