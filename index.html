@@ -9,6 +9,8 @@
   <link rel="stylesheet" type="text/css" href="../assets/stylesheets/reset.css">
   <link rel="stylesheet" type="text/css" href="../assets/stylesheets/application.css">
   <link rel="stylesheet" type="text/css" href="../assets/stylesheets/game_container.css">
+  <link rel="stylesheet" type="text/css" href="../assets/stylesheets/menu.css">
+  <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet">
   <script src="../vendor/keymaster.js"></script>
   <script src="./main.js"></script>
   <title>Gotta-Type-em-All!</title>
@@ -16,12 +18,11 @@
 
 <body>
   <div class="main-container">
-    
-    <div style="position:relative">
-      <canvas id="game-canvas" class="canvas-class" style="background-color: rgb(255, 201, 102);"></canvas>
-      <input id="pokemon-input" type="text"/>
-    </div>
-  
+    <!-- <div style="position:relative"> -->
+      <canvas id="menu-canvas" class="menu-canvas" style="z-index: -1;"></canvas>
+      <canvas id="game-canvas" class="game-canvas"></canvas>
+      <input id="pokemon-input" type="text" spellcheck="false"/>
+    <!-- </div> -->
   </div>
 </body>
 
