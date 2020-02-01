@@ -5,7 +5,7 @@ import POKEDEX from './pokedex';
 import GameUI from './game_ui';
 
 const TRAINER_POSITIONS = {
-  forest: [530, 130]
+  forest: [530, 140]
 };
 
 const POSITIONS = [
@@ -57,7 +57,7 @@ class Game {
   };
 
   adjustHealth(){
-    
+
   }
 
   addGrass() {
