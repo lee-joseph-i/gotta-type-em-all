@@ -3,6 +3,8 @@ class GameUI {
     this.uiCtx = uiCtx;
     this.exclamation = new Image();
     this.exclamation.src = "../assets/sprites/exclamation.png";
+    this.healthBar = new Image();
+    this.healthBar.src = "../assets/sprites/hp_edit.png";
   }
 
   missedThrow(pos){
@@ -22,13 +24,33 @@ class GameUI {
     }, 600);
   }
 
+  drawHealthBar(){
+    this.uiCtx.drawImage(
+      this.healthBar,
+      0,
+      0,
+      569,
+      215,
+      600,
+      20,
+      569 / 2,
+      215 / 2
+    ); 
+    this.uiCtx.fillStyle = "rgb(35, 223, 57)"
+    this.uiCtx.fillRect(699.5, 59.5, 113.2, 5.5);
+  }
+
+  updateHealth(){
+
+  }
+
   draw(wildCount, catchCount) {
     this.uiCtx.beginPath();
     this.uiCtx.font = 'bold 20px "Arial"';
     this.uiCtx.fillStyle = "white";
     this.uiCtx.fillText(
       `Pokemon Caught: ${catchCount}`,
-      240,
+      100,
       50
     );
     if (wildCount < 7) {
@@ -40,19 +62,22 @@ class GameUI {
     }
     this.uiCtx.fillText(
       `Pokemon Escaped: ${wildCount}`,
-      240,
+      100,
       80
     );
     this.uiCtx.fill();
     this.uiCtx.closePath();
-    ///////////
 
-    if (catchCount >= 10) {
-      this.game.player.health = 10;
-      clearInterval(window.intervalId);
-      // cancelAnimationFrame(request);
-      // .gameOver();
-    }
+    setTimeout(() => {
+      this.drawHealthBar();
+    }, 50); //JANKY!!!
+
+    // if (catchCount >= 10) {
+    //   this.game.player.health = 10;
+    //   clearInterval(window.intervalId);
+    //   // cancelAnimationFrame(request);
+    //   // .gameOver();
+    // }
   }
 }
 

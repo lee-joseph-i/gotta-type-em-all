@@ -56,6 +56,10 @@ class Game {
     return ui;
   };
 
+  adjustHealth(){
+    
+  }
+
   addGrass() {
     for (let i = 0; i < POSITIONS.length; i++) {
       this.grass.push(new Grass(this.grassCtx, POSITIONS[i]));
@@ -87,35 +91,16 @@ class Game {
 
   addPokemon() {
     let allPositions = POSITIONS.length;
-    let timer = Math.floor(Math.random() * 500) + 100;
+    let timer = Math.floor(Math.random() * 2000) + 100;
     let spawnPoke = setTimeout(() => {
       if (POSITIONS.length > 0) {
         let poke = this.generatePoke();
         this.pokemon.push(poke);
-        // this.escape(poke);
         this.pokemonWildCount += 1;
       }
       this.addPokemon();
     }, timer);
   }
-
-  drawPokemon(){
-    this.pokemon.forEach( poke => {
-
-    })
-  }
-
-  // throwTypeBall(typeBall) {
-  //   for (let i = 0; i < this.pokemon.length; i++) {
-  //     let poke = this.pokemon[i];
-  //     if (typeBall.toLowerCase() === poke.poke.name) {
-  //       clearTimeout(poke.escapeTimer);
-  //       this.removePokemon(poke);
-  //       this.pokemonCatchCount += 1;
-  //       break;
-  //     }
-  //   };
-  // };
 
   removePokemon(poke) {
     let pokeName = poke.poke.name;

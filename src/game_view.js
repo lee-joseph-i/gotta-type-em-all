@@ -17,11 +17,12 @@ class GameView {
       this.uiCtx,
       this.grassCtx
     );
-    this.catchCount = 0;
-    this.wildCount = 0;
-    this.escapeCount = 0; 
+    this.catchCount = this.game.pokemonCatchCount; //janky
+    this.wildCount = this.game.pokemonWildCount;
+    this.escapeCount = this.game.pokemonEscapeCount; 
     this.gameOver = false;
 
+    this.game.ui.draw(this.wildCount, this.catchCount);
     this.throwBall = this.throwBall.bind(this); //this seems useless, why didn't it work for handleInput?
   }
 
@@ -44,7 +45,7 @@ class GameView {
       if (guessedName.toLowerCase() === poke.poke.name) {
         clearTimeout(poke.escapeTimer);
         this.game.removePokemon(poke);
-        this.pokemonCatchCount += 1;
+        this.CatchCount += 1;
         notFound = false;
         break;
       }
@@ -70,6 +71,7 @@ class GameView {
   }
 
   animateGame() {
+ 
     requestAnimationFrame(this.animateGame.bind(this));
     this.gameNow = Date.now();
     this.gameDelta = this.gameNow - this.gameThen;
@@ -78,7 +80,6 @@ class GameView {
       this.gameCtx.clearRect(
         20, 100, 810, 550
       );
-      this.game.ui.draw();
       this.game.trainer.cycle++
       this.game.trainer.draw();
       this.game.grass.forEach( grass => {
