@@ -38,9 +38,9 @@ class GameView {
 
   throwBall(guessedName){
     let pokemon = this.game.pokemon;
+    let notFound = true;
     for (let i = 0; i < pokemon.length; i++) {
       let poke = pokemon[i];
-      let notFound = true;
       if (guessedName.toLowerCase() === poke.poke.name) {
         clearTimeout(poke.escapeTimer);
         this.game.removePokemon(poke);
@@ -48,8 +48,10 @@ class GameView {
         notFound = false;
         break;
       }
-        this.game.ui.missedThrow(this.game.trainer.pos)
     };
+    if(notFound){
+      this.game.ui.missedThrow(this.game.trainer.pos)
+    }
   }
 
   start() {
