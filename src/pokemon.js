@@ -3,15 +3,11 @@ import Game from './game';
 import POKEDEX from './pokedex';
 
 class Pokemon {
-  constructor(ctx, canvas, game, id, x, y){
-    this.ctx = ctx;
-    this.canvas = canvas;
+  constructor(gameCtx, game, id, pos){
+    this.gameCtx = gameCtx;
     this.game = game;
     this.poke = id;
-    this.x = x;
-    this.y = y;
-    // this.dx = 2.5;
-    // this.dy = 0;
+    this.pos = [pos[0], pos[1]];
     this.shift = 0;
     this.shift2 = 0;
     // this.startEscapeTimer();
@@ -26,21 +22,20 @@ class Pokemon {
   }
   
   draw(){
-    // this.ctx.clearRect(this.x, this.y, this.poke.shift1, this.poke.shift1)
-    this.ctx.drawImage(this.pokeImg, this.shift, 0, 
+    // this.gameCtx.clearRect(this.pos[0] - this.poke.adjustX + 20, this.pos[1] - this.poke.adjustY, this.poke.shift1, this.poke.shift1)
+    this.gameCtx.drawImage(this.pokeImg, this.shift, 0, 
                         this.poke.shift1, this.poke.shift1, 
-                        this.x - this.poke.adjustX + 20, this.y - this.poke.adjustY,
+                        this.pos[0] - this.poke.adjustX + 20, this.pos[1] - this.poke.adjustY,
                         this.poke.shift1, this.poke.shift1);
     this.animate();
   }
 
   animate(){
-    let that = this;
     if (this.shift <= this.poke.srcSpriteLength){
       this.shift += 192;
     } else if ( this.shift >= this.poke.srcSpriteLength ){
-      // this.ctx.clearRect(this.x, this.y, 192, 192);
-      this.ctx.drawImage(this.pokeImg2, this.shift2, 0, this.poke.shift2_x, this.poke.shift2_y, that.x + 20 + this.poke.adjustX_2, that.y + this.poke.adjustY_2, this.poke.shift2_x, this.poke.shift2_y);
+      // this.gameCtx.clearRect(this.x, this.y, 192, 192);
+      this.gameCtx.drawImage(this.pokeImg2, this.shift2, 0, this.poke.shift2_x, this.poke.shift2_y, this.pos[0] + 20 + this.poke.adjustX_2, this.pos[1] + this.poke.adjustY_2, this.poke.shift2_x, this.poke.shift2_y);
       this.shift2 += this.poke.shift2_x;
       if (this.shift2 >= this.poke.srcSpriteLength2){
         this.shift2 = 0;
@@ -54,7 +49,7 @@ class Pokemon {
       // console.log(this)
       // console.log(this.poke.name)
       this.game.removePokemon(this);
-      this.game.pokemonEscapeCount +=1;
+      this.game.pokemonEscapeCount += 1;
     }, this.poke.escapeTimer);
   }
 }

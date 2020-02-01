@@ -1,13 +1,25 @@
+import Game from './game';
+import GameUI from './game_ui';
+
 class GameView {
-  constructor(game, ctx) {
-    this.ctx = ctx;
-    this.game = game;
-    this.score = game.pokemonCatchCount;
-    this.fps = 36;
-    this.interval = 1000 / this.fps;
-    this.now;
-    this.then = Date.now();
-    this.delta;
+  constructor(gameCtx, uiCtx, grassCtx) {
+    this.gameCtx = gameCtx;
+    this.uiCtx = uiCtx;
+    this.grassCtx = grassCtx;
+    this.gameFps = 36;
+    this.gameInterval = 1000 / this.gameFps;
+    this.gameNow;
+    this.gameThen = Date.now();
+    this.gameDelta;
+
+    this.game = new Game(
+      this.gameCtx,
+      this.uiCtx,
+      this.grassCtx
+    );
+    this.catchCount = 0;
+    this.wildCount = 0;
+    this.escapeCount = 0; 
     this.gameOver = false;
   }
 
@@ -24,9 +36,7 @@ class GameView {
 
   start() {
     this.handleInput();
-    this.lastTime = 0;
-    // start the animation
-    requestAnimationFrame(this.animate.bind(this));
+    requestAnimationFrame(this.animateGame.bind(this));
   }
 
   gameOver(){
@@ -39,16 +49,26 @@ class GameView {
     }
   }
 
-  animate() {
-    requestAnimationFrame(this.animate.bind(this));
-    this.now = Date.now();
-    this.delta = this.now - this.then;
-    if (this.delta > this.interval) {
-      this.then = this.now - (this.delta % this.interval);
-      this.game.draw(this.ctx);
+  animateGame() {
+    requestAnimationFrame(this.animateGame.bind(this));
+    this.gameNow = Date.now();
+    this.gameDelta = this.gameNow - this.gameThen;
+    if (this.gameDelta > this.gameInterval) {
+      this.gameThen = this.gameNow - (this.gameDelta % this.gameInterval);
+      this.gameCtx.clearRect(
+        20, 100, 810, 550
+      );
+      this.game.ui.draw();
+      this.game.trainer.cycle++
+      this.game.trainer.draw();
+      this.game.grass.forEach( grass => {
+        grass.draw();
+      });
+      this.game.pokemon.forEach( poke => {
+        poke.draw();
+      });
     }
   }
-
 
 }
 

@@ -2,9 +2,8 @@ import Util from "./utils";
 import Game from "./game";
 
 class Trainer {
-  constructor(ctx, canvas, pos) {
-    this.ctx = ctx;
-    this.canvas = canvas;
+  constructor(gameCtx, pos) {
+    this.gameCtx = gameCtx;
     this.shift = 0;
     this.shifter = 200;
     this.pos = [pos[0], pos[1]];
@@ -14,8 +13,8 @@ class Trainer {
   }
 
   draw() {
-    // this.ctx.clearRect(this.x, this.y, this.poke.shift1, this.poke.shift1)
-    this.ctx.drawImage(
+    // this.gameCtx.clearRect(this.pos[0], this.pos[1], 200, 200)
+    this.gameCtx.drawImage(
       this.TrainerImg,
       this.shift,
       0,

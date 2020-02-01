@@ -3,9 +3,8 @@ import Game from "./game";
 
 
 class Grass {
-  constructor(ctx, canvas, pos) {
+  constructor(ctx, pos) {
     this.ctx = ctx;
-    this.canvas = canvas;
     this.pos = [pos[0], pos[1]];
     this.grassImg = new Image();
     this.grassImg.src = "../assets/sprites/tall-grass-adjusted.png";

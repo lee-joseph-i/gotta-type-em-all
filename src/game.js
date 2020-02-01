@@ -2,9 +2,10 @@ import Pokemon from './pokemon';
 import Trainer from './trainer';
 import Grass from './grass';
 import POKEDEX from './pokedex';
+import GameUI from './game_ui';
 
 const TRAINER_POSITIONS = {
-  forest: [520, 130],
+  forest: [530, 130]
 };
 
 const POSITIONS = [
@@ -33,27 +34,33 @@ const POSITIONS = [
 const availablePoke = Object.keys(POKEDEX);
 
 class Game {
-  constructor(ctx, canvas) {
-    this.ctx = ctx;
-    this.canvas = canvas;
-    this.grass = [];
-    this.pokemon = [];
-    this.trainer = [];
+  constructor(gameCtx, uiCtx, grassCtx) {
+    this.gameCtx = gameCtx;
+    this.uiCtx = uiCtx;
+    this.grassCtx = grassCtx;
     this.pokemonWildCount = 0;
     this.pokemonCatchCount = 0;
     this.pokemonEscapeCount = 0;
-    this.BG_COLOR = "#37d437";
-    this.FPS = 60;
+    this.ui = this.addUi();
+    this.grass = [];
+    this.pokemon = [];
     this.addGrass();
     this.addPokemon();
-    this.addTrainer();
-  }
+    this.trainer = this.addTrainer();
+  };
+
+  addUi(){
+    let ui = new GameUI(
+      this.uiCtx,
+    );
+    return ui;
+  };
 
   addGrass() {
     for (let i = 0; i < POSITIONS.length; i++) {
-      this.grass.push(new Grass(this.ctx, this.canvas, POSITIONS[i], false));
-    }
-  }
+      this.grass.push(new Grass(this.grassCtx, POSITIONS[i]));
+    };
+  };
 
   generateSpawnPoint() {
     let randomPos = Math.floor(
@@ -61,7 +68,7 @@ class Game {
     );
     let chosen = POSITIONS.splice(randomPos, 1);
     return chosen[0];
-  }
+  };
 
   generatePoke() {
     let randomIdx = Math.floor(
@@ -70,19 +77,18 @@ class Game {
     let pos = this.generateSpawnPoint();
     let pokeid = availablePoke.splice(randomIdx, 1)[0];
     let poke = new Pokemon(
-      this.ctx,
-      this.canvas,
+      this.gameCtx,
       this,
       POKEDEX[pokeid],
-      pos[0],
-      pos[1]
+      pos
     );
     return poke;
   }
 
   addPokemon() {
     let allPositions = POSITIONS.length;
-    let timer = Math.floor(Math.random() * 0) + 1000;
+    console.log(POSITIONS)
+    let timer = Math.floor(Math.random() * 500) + 100;
     let spawnPoke = setTimeout(() => {
       if (POSITIONS.length > 0) {
         let poke = this.generatePoke();
@@ -94,6 +100,12 @@ class Game {
     }, timer);
   }
 
+  drawPokemon(){
+    this.pokemon.forEach( poke => {
+
+    })
+  }
+
   throwTypeBall(typeBall) {
     for (let i = 0; i < this.pokemon.length; i++) {
       let poke = this.pokemon[i];
@@ -103,76 +115,29 @@ class Game {
         this.pokemonCatchCount += 1;
         break;
       }
-    }
-  }
+    };
+  };
 
   removePokemon(poke) {
     let pokeName = poke.poke.name;
     for(let i = 0; i < this.pokemon.length; i++){
-      console.log(poke.poke.name)
-      console.log(this.pokemon[i].poke.name)
       if(this.pokemon[i].poke.name === pokeName){
         this.pokemon.splice(i, 1);
         break;
       };
     };
     this.pokemonWildCount -= 1;
-    POSITIONS.push([poke.x, poke.y]);
+    POSITIONS.push([poke.pos[0], poke.pos[1]]);
     availablePoke.push(poke.poke.id);
     return true;
   }
 
   addTrainer(){
     let trainer = new Trainer(
-      this.ctx,
-      this.canvas,
+      this.gameCtx,
       TRAINER_POSITIONS["forest"],
     );
-    console.log(trainer)
-    this.trainer.push(trainer);
     return trainer;
-  }
-
-  allObjects() {
-    if (this.trainer !== null) {
-      return [].concat(this.grass, this.pokemon, this.trainer);
-    }
-    return [].concat(this.grass, this.pokemon);
-  }
-
-  draw(ctx) {
-    this.trainer[0].cycle++
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.allObjects().forEach(function(object) {
-      object.draw(ctx);
-    });
-    
-    //below can be wrapped into a "draw score" function. 
-    //research draw efficiency
-    this.ctx.beginPath();
-    this.ctx.font = 'bold 20px "Arial"';
-    this.ctx.fillStyle = "white";
-    this.ctx.fillText(`Pokemon Caught: ${this.pokemonCatchCount}`, this.canvas.width - 240, 50);
-    if (this.pokemonEscapeCount < 7){
-      this.ctx.fillStyle = "white";
-    } else if (this.pokemonEscapeCount > 5 && this.pokemonEscapeCount < 9) {
-      this.ctx.fillStyle = "yellow";
-    } else {
-      this.ctx.fillStyle = "red";
-    }
-    this.ctx.fillText(`Pokemon Escaped: ${this.pokemonEscapeCount}`, this.canvas.width - 240, 80);
-    this.ctx.fill();
-    this.ctx.closePath();
-    ///////////
-
-    if (this.pokemonCatchCount >= 10) {
-      this.player.health = 10;
-      clearInterval(window.intervalId);
-      // cancelAnimationFrame(request);
-      // .gameOver();
-    }
-
-
   }
 };
 
