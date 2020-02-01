@@ -87,7 +87,6 @@ class Game {
 
   addPokemon() {
     let allPositions = POSITIONS.length;
-    console.log(POSITIONS)
     let timer = Math.floor(Math.random() * 500) + 100;
     let spawnPoke = setTimeout(() => {
       if (POSITIONS.length > 0) {
@@ -106,17 +105,17 @@ class Game {
     })
   }
 
-  throwTypeBall(typeBall) {
-    for (let i = 0; i < this.pokemon.length; i++) {
-      let poke = this.pokemon[i];
-      if (typeBall.toLowerCase() === poke.poke.name) {
-        clearTimeout(poke.escapeTimer);
-        this.removePokemon(poke);
-        this.pokemonCatchCount += 1;
-        break;
-      }
-    };
-  };
+  // throwTypeBall(typeBall) {
+  //   for (let i = 0; i < this.pokemon.length; i++) {
+  //     let poke = this.pokemon[i];
+  //     if (typeBall.toLowerCase() === poke.poke.name) {
+  //       clearTimeout(poke.escapeTimer);
+  //       this.removePokemon(poke);
+  //       this.pokemonCatchCount += 1;
+  //       break;
+  //     }
+  //   };
+  // };
 
   removePokemon(poke) {
     let pokeName = poke.poke.name;

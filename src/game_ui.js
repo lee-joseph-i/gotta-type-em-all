@@ -1,8 +1,3 @@
-import Pokemon from "./pokemon";
-import Trainer from "./trainer";
-import Grass from "./grass";
-import POKEDEX from "./pokedex";
-
 class GameUI {
   constructor(uiCtx) {
     this.uiCtx = uiCtx;
@@ -10,19 +5,21 @@ class GameUI {
     this.exclamation.src = "../assets/sprites/exclamation.png";
   }
 
-  drawExclamation(){
-    this.ctx.drawImage(
+  missedThrow(pos){
+    this.uiCtx.drawImage(
       this.exclamation,
       0,
       0,
       131,
       132,
-      100,
-      100,
-      131 / 3,
-      132 / 3
+      pos[0] + 90,
+      pos[1] - 25,
+      131 / 2.6,
+      132 / 2.6
     );
-    
+    setTimeout( () => {
+      this.uiCtx.clearRect(pos[0] + 90, pos[1] - 25, 131, 132)
+    }, 600);
   }
 
   draw(wildCount, catchCount) {
