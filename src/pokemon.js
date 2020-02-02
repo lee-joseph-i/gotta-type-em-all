@@ -49,7 +49,8 @@ class Pokemon {
       // console.log(this)
       // console.log(this.poke.name)
       this.game.removePokemon(this);
-      this.game.pokemonEscapeCount += 1;
+      this.game.EscapeCount += 1;
+      this.game.decreaseHP();
     }, this.poke.escapeTimer);
   }
 }

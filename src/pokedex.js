@@ -13,7 +13,8 @@ const POKEDEX = {
     adjustY_2: 0,
     srcSpriteLength: 11520,
     srcSpriteLength2: 1980,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   1: {
     id: 1,
@@ -29,7 +30,8 @@ const POKEDEX = {
     adjustY_2: 0,
     srcSpriteLength: 12672 - 192,
     srcSpriteLength2: 1537,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   2: {
     id: 2,
@@ -45,7 +47,8 @@ const POKEDEX = {
     adjustY_2: 0,
     srcSpriteLength: 13056 - 192,
     srcSpriteLength2: 3312,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   3: {
     id: 3,
@@ -61,7 +64,8 @@ const POKEDEX = {
     adjustY_2: 8,
     srcSpriteLength: 9792 - 192,
     srcSpriteLength2: 1845,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   4: {
     id: 4,
@@ -78,6 +82,7 @@ const POKEDEX = {
     srcSpriteLength: 12672 - 192,
     srcSpriteLength2: 5451,
     escapeTimer: 3000,
+    shiny: false
   },
   5: {
     id: 5,
@@ -93,7 +98,8 @@ const POKEDEX = {
     adjustY_2: -20,
     srcSpriteLength: 13632 - 192,
     srcSpriteLength2: 5698,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   6: {
     id: 6,
@@ -109,7 +115,8 @@ const POKEDEX = {
     adjustY_2: -50,
     srcSpriteLength: 12672 - 192,
     srcSpriteLength2: 7371,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   7: {
     id: 7,
@@ -125,7 +132,8 @@ const POKEDEX = {
     adjustY_2: 0,
     srcSpriteLength: 13632 - 192,
     srcSpriteLength2: 1600,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   8: {
     id: 8,
@@ -141,7 +149,8 @@ const POKEDEX = {
     adjustY_2: -14,
     srcSpriteLength: 11712 - 192,
     srcSpriteLength2: 6426,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   9: {
     id: 9,
@@ -157,7 +166,8 @@ const POKEDEX = {
     adjustY_2: -34,
     srcSpriteLength: 13632 - 192,
     srcSpriteLength2: 1711,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   10: {
     id: 10,
@@ -173,7 +183,8 @@ const POKEDEX = {
     adjustY_2: 10,
     srcSpriteLength: 15552 - 192,
     srcSpriteLength2: 2254,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   11: {
     id: 11,
@@ -189,7 +200,8 @@ const POKEDEX = {
     adjustY_2: 4,
     srcSpriteLength: 15168 - 192,
     srcSpriteLength2: 1845,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   12: {
     id: 12,
@@ -205,7 +217,8 @@ const POKEDEX = {
     adjustY_2: -18,
     srcSpriteLength: 7872 - 192,
     srcSpriteLength2: 4056,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   13: {
     id: 13,
@@ -221,7 +234,8 @@ const POKEDEX = {
     adjustY_2: -24,
     srcSpriteLength: 12672 - 192,
     srcSpriteLength2: 5251,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   14: {
     id: 14,
@@ -237,7 +251,8 @@ const POKEDEX = {
     adjustY_2: -20,
     srcSpriteLength: 12480 - 192,
     srcSpriteLength2: 6952,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   15: {
     id: 15,
@@ -253,7 +268,8 @@ const POKEDEX = {
     adjustY_2: -30,
     srcSpriteLength: 13632 - 192,
     srcSpriteLength2: 3901,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   16: {
     id: 16,
@@ -269,7 +285,8 @@ const POKEDEX = {
     adjustY_2: 15,
     srcSpriteLength: 10752 - 192,
     srcSpriteLength2: 2254,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   17: {
     id: 17,
@@ -285,7 +302,8 @@ const POKEDEX = {
     adjustY_2: -80,
     srcSpriteLength: 12096 - 192,
     srcSpriteLength2: 6251,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   18: {
     id: 18,
@@ -301,7 +319,8 @@ const POKEDEX = {
     adjustY_2: -10,
     srcSpriteLength: 14208 - 192,
     srcSpriteLength2: 3540,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   19: {
     id: 19,
@@ -317,7 +336,8 @@ const POKEDEX = {
     adjustY_2: -38,
     srcSpriteLength: 11712 - 192,
     srcSpriteLength2: 4012,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   20: {
     id: 20,
@@ -333,7 +353,8 @@ const POKEDEX = {
     adjustY_2: -35,
     srcSpriteLength: 15552 - 192,
     srcSpriteLength2: 3740,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   21: {
     id: 21,
@@ -349,7 +370,8 @@ const POKEDEX = {
     adjustY_2: -10,
     srcSpriteLength: 11520 - 192,
     srcSpriteLength2: 5015,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   22: {
     id: 22,
@@ -365,7 +387,8 @@ const POKEDEX = {
     adjustY_2: -16,
     srcSpriteLength: 10368 - 192,
     srcSpriteLength2: 3276,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   23: {
     id: 23,
@@ -381,7 +404,8 @@ const POKEDEX = {
     adjustY_2: -14,
     srcSpriteLength: 13632 - 192,
     srcSpriteLength2: 5015,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   24: {
     id: 24,
@@ -397,7 +421,8 @@ const POKEDEX = {
     adjustY_2: -4,
     srcSpriteLength: 11712 - 192,
     srcSpriteLength2: 4116,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
   25: {
     id: 25,
@@ -413,7 +438,8 @@ const POKEDEX = {
     adjustY_2: -28,
     srcSpriteLength: 16128 - 192,
     srcSpriteLength2: 7110,
-    escapeTimer: 7000,
+    escapeTimer: 6500,
+    shiny: false
   },
 
 

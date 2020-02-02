@@ -17,13 +17,9 @@ class GameView {
       this.uiCtx,
       this.grassCtx
     );
-    this.catchCount = this.game.pokemonCatchCount; //janky
-    this.wildCount = this.game.pokemonWildCount;
-    this.escapeCount = this.game.pokemonEscapeCount; 
     this.gameOver = false;
 
-    this.game.ui.draw(this.wildCount, this.catchCount);
-    this.throwBall = this.throwBall.bind(this); //this seems useless, why didn't it work for handleInput?
+    // this.game.ui.draw(this.wildCount, this.catchCount);
   }
 
   handleInput() {
@@ -31,28 +27,10 @@ class GameView {
     let input = document.getElementById("pokemon-input");
     input.onkeydown = function(e) {
       if (e.keyCode == 13) {
-        that.throwBall(e.currentTarget.value);
+        that.game.throwBall(e.currentTarget.value);
         input.value = "";
       }
     };
-  }
-
-  throwBall(guessedName){
-    let pokemon = this.game.pokemon;
-    let notFound = true;
-    for (let i = 0; i < pokemon.length; i++) {
-      let poke = pokemon[i];
-      if (guessedName.toLowerCase() === poke.poke.name) {
-        clearTimeout(poke.escapeTimer);
-        this.game.removePokemon(poke);
-        this.CatchCount += 1;
-        notFound = false;
-        break;
-      }
-    };
-    if(notFound){
-      this.game.ui.missedThrow(this.game.trainer.pos)
-    }
   }
 
   start() {
