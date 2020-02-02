@@ -441,6 +441,108 @@ const POKEDEX = {
     escapeTimer: 6500,
     shiny: false
   },
+  26: {
+    id: 26,
+    name: "kiria",
+    src: "../assets/sprites/kiria-open.png",
+    src2: "../assets/sprites/kiria-idle.png",
+    shift1: 192,
+    shift2_x: 44,
+    shift2_y: 68,
+    adjustX: 72,
+    adjustX_2: 4, // +12
+    adjustY: 102,
+    adjustY_2: -8, // go positive
+    srcSpriteLength: 12480 - 192,
+    srcSpriteLength2: 1672,
+    escapeTimer: 6500,
+    shiny: false
+  },
+  27: {
+    id: 27,
+    name: "lapras",
+    src: "../assets/sprites/lapras-open.png",
+    src2: "../assets/sprites/lapras-idle.png",
+    shift1: 192,
+    shift2_x: 94,
+    shift2_y: 84,
+    adjustX: 72,
+    adjustX_2: -16,
+    adjustY: 98,
+    adjustY_2: -22,
+    srcSpriteLength: 14016 - 192,
+    srcSpriteLength2: 8366,
+    escapeTimer: 6500,
+    shiny: false
+  },
+  28: {
+    id: 28,
+    name: "ledian",
+    src: "../assets/sprites/ledian-open.png",
+    src2: "../assets/sprites/ledian-idle.png",
+    shift1: 192,
+    shift2_x: 46,
+    shift2_y: 83,
+    adjustX: 72,
+    adjustX_2: 0,
+    adjustY: 98,
+    adjustY_2: -30,
+    srcSpriteLength: 11712 - 192,
+    srcSpriteLength2: 1886,
+    escapeTimer: 6500,
+    shiny: false
+  },
+  29: {
+    id: 25,
+    name: "ledyba",
+    src: "../assets/sprites/ledyba-open.png",
+    src2: "../assets/sprites/ledyba-idle.png",
+    shift1: 192,
+    shift2_x: 61,
+    shift2_y: 50,
+    adjustX: 72,
+    adjustX_2: 2,
+    adjustY: 110,
+    adjustY_2: -5, // -8
+    srcSpriteLength: 10752 - 192,
+    srcSpriteLength2: 2379,
+    escapeTimer: 6500,
+    shiny: false
+  },
+  30: {
+    id: 30,
+    name: "lickitung",
+    src: "../assets/sprites/lickitung-open.png",
+    src2: "../assets/sprites/lickitung-idle.png",
+    shift1: 192,
+    shift2_x: 58,
+    shift2_y: 59,
+    adjustX: 72,
+    adjustX_2: -6, //+6
+    adjustY: 102,
+    adjustY_2: 0, // go positive
+    srcSpriteLength: 11712 - 192,
+    srcSpriteLength2: 1334,
+    escapeTimer: 6500,
+    shiny: false
+  },
+  31: {
+    id: 31,
+    name: "lombre",
+    src: "../assets/sprites/lombre-open.png",
+    src2: "../assets/sprites/lombre-idle.png",
+    shift1: 192,
+    shift2_x: 62,
+    shift2_y: 62,
+    adjustX: 68,
+    adjustX_2: -4, // +6
+    adjustY: 102,
+    adjustY_2: 0, //go pos
+    srcSpriteLength: 12672 - 192,
+    srcSpriteLength2: 3658,
+    escapeTimer: 6500,
+    shiny: false
+  },
 
 
 };

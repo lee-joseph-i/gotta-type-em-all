@@ -50,12 +50,12 @@ class Game {
     this.addGrass();
     this.addPokemon();
     this.trainer = this.addTrainer();
-  }
+  };
 
   addUi() {
     let ui = new GameUI(this.uiCtx);
     return ui;
-  }
+  };
 
   throwBall(guessedName) {
     let pokemon = this.pokemon;
@@ -69,24 +69,24 @@ class Game {
         notFound = false;
         this.ui.draw(this.catchCount, this.escapeCount);
         break;
-      }
-    }
+      };
+    };
     if (notFound) {
       this.ui.missedThrow(this.trainer.pos);
-    }
-  }
+    };
+  };
 
   decreaseHP() {
     //pokemon escaped and lower's player's HP.
     this.HP -= 1;
     this.ui.drawHealthBar("negative");
-  }
+  };
 
   addGrass() {
     for (let i = 0; i < POSITIONS.length; i++) {
       this.grass.push(new Grass(this.grassCtx, POSITIONS[i]));
-    }
-  }
+    };
+  };
 
   generateSpawnPoint() {
     let randomPos = Math.floor(
@@ -94,30 +94,30 @@ class Game {
     );
     let chosen = POSITIONS.splice(randomPos, 1);
     return chosen[0];
-  }
+  };
 
   generatePoke() {
     let randomIdx = Math.floor(
-      Math.random() * Math.floor(availablePoke.length - 1)
+      Math.random() * Math.floor(availablePoke.length)
     );
     let pos = this.generateSpawnPoint();
     let pokeid = availablePoke.splice(randomIdx, 1)[0];
     let poke = new Pokemon(this.gameCtx, this, POKEDEX[pokeid], pos);
     return poke;
-  }
+  };
 
   addPokemon() {
     let allPositions = POSITIONS.length;
-    let timer = Math.floor(Math.random() * 2500) + 100;
+    let timer = Math.floor(Math.random() * 0) + 100;
     let spawnPoke = setTimeout(() => {
       if (POSITIONS.length > 0) {
         let poke = this.generatePoke();
         this.pokemon.push(poke);
         this.wildCount += 1;
-      }
+      };
       this.addPokemon();
     }, timer);
-  }
+  };
 
   removePokemon(poke) {
     let pokeName = poke.poke.name;
@@ -125,18 +125,18 @@ class Game {
       if (this.pokemon[i].poke.name === pokeName) {
         this.pokemon.splice(i, 1);
         break;
-      }
-    }
+      };
+    };
     this.wildCount -= 1;
     POSITIONS.push([poke.pos[0], poke.pos[1]]);
     availablePoke.push(poke.poke.id);
     this.ui.draw(this.catchCount, this.escapeCount);
-  }
+  };
 
   addTrainer() {
     let trainer = new Trainer(this.gameCtx, TRAINER_POSITIONS["forest"]);
     return trainer;
-  }
+  };
 };
 
 export default Game;

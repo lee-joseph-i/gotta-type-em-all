@@ -97,7 +97,6 @@ class GameUI {
     this.uiCtx.clearRect(100, 0, 500, 500);
     this.uiCtx.beginPath();
     this.uiCtx.font = 'bold 35px "VT323"';
-    console.log(this.uiCtx.font)
     this.uiCtx.fillStyle = "white";
     this.uiCtx.fillText(
       `Pokemon Caught: ${catchCount}`,
