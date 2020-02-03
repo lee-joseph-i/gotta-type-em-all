@@ -1,6 +1,10 @@
 import GameView from './game_view';
 
 window.addEventListener('DOMContentLoaded', () => {
+
+  //type form
+  const input = document.getElementById("pokemon-input");
+
   
   // game canvas
   const gameCanvas = document.getElementById("game-canvas");
@@ -14,10 +18,11 @@ window.addEventListener('DOMContentLoaded', () => {
   uiCanvas.height = 700;
   uiCanvas.width = 900;
 
-        const grassCanvas = document.getElementById("grass-canvas");
-        const grassCtx = grassCanvas.getContext("2d");
-        grassCanvas.height = 700;
-        grassCanvas.width = 900;
+  //grass canvas
+  const grassCanvas = document.getElementById("grass-canvas");
+  const grassCtx = grassCanvas.getContext("2d");
+  grassCanvas.height = 700;
+  grassCanvas.width = 900;
   
   // //initialize game
   // const game = new Game(gameCtx, gameCanvas);
@@ -30,7 +35,7 @@ window.addEventListener('DOMContentLoaded', () => {
   menuCanvas.height = 700;
   menuCanvas.width = 900;
   
-  new GameView(gameCtx, uiCtx, grassCtx).start();
+  new GameView(gameCtx, uiCtx, grassCtx, input).start();
 })
 
 //challenges (add a README later):

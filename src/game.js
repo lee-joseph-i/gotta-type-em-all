@@ -43,6 +43,7 @@ class Game {
     this.catchCount = 0;
     this.escapeCount = 0;
     this.HP = 10;
+    this.ppm;
     this.ui.draw(this.catchCount, this.escapeCount);
     // this.ui.drawHealthBar(null, this.HP);
     this.grass = [];
@@ -67,8 +68,8 @@ class Game {
         this.removePokemon(poke);
         this.catchCount += 1;
         notFound = false;
-        this.ui.drawStatsBar(this.catchCount, this.escapeCount);
-        break;
+        this.ui.drawStatsBar(this.catchCount, this.escapeCount, this.ppm);
+        return true;
       };
     };
     if (notFound) {
@@ -80,7 +81,7 @@ class Game {
     //pokemon escaped and lower's player's HP.
     this.HP -= 1;
     this.escapeCount += 1;
-    this.ui.drawStatsBar(this.catchCount, this.escapeCount);
+    this.ui.drawStatsBar(this.catchCount, this.escapeCount, this.ppm);
     this.ui.drawHealthBar("negative", this.HP);
     // this.ui.drawHPText(this.HP);
   };
@@ -111,7 +112,7 @@ class Game {
 
   addPokemon() {
     let allPositions = POSITIONS.length;
-    let timer = Math.floor(Math.random() * 3000) + 200;
+    let timer = Math.floor(Math.random() * 2500) + 100;
     let spawnPoke = setTimeout(() => {
       if (POSITIONS.length > 0) {
         let poke = this.generatePoke();
@@ -133,7 +134,6 @@ class Game {
     this.wildCount -= 1;
     POSITIONS.push([poke.pos[0], poke.pos[1]]);
     availablePoke.push(poke.poke.id);
-    // this.ui.drawStatsBar(this.catchCount, this.escapeCount);
   };
 
   addTrainer() {
