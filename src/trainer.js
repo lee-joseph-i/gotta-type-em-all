@@ -9,7 +9,7 @@ class Trainer {
     this.pos = [pos[0], pos[1]];
     this.cycle = 0;
     this.TrainerImg = new Image();
-    this.TrainerImg.src = "../assets/sprites/trainer.png";
+    this.TrainerImg.src = "../dist/assets/sprites/trainer.png";
   }
 
   draw() {
