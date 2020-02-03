@@ -12,9 +12,16 @@ class GameUI {
     this.health = 113.2;
     this.healthNet = 113.2 / 10;
     this.healthBar.onload = () => {
-      this.drawHealthBar();
-    }
-  }
+      this.drawHealthBar(null, 10);
+    };
+    this.statsBar = new Image();
+    this.statsBar.src = "../assets/sprites/statsbarfinalfinal.png";
+    this.statsBarPos = [10, 10];
+    this.statsBarDim = [400, 200];
+    this.statsBar.onload = () => {
+      this.drawStatsBar(0, 0);
+    };
+  };
 
   missedThrow(pos){
     this.uiCtx.drawImage(
@@ -33,7 +40,8 @@ class GameUI {
     }, 600);
   }
 
-  drawHealthBar(net){
+  drawHealthBar(net, HP){
+    console.log(HP)
     this.uiCtx.clearRect(
       this.healthBarPos[0],
       this.healthBarPos[1],
@@ -80,43 +88,63 @@ class GameUI {
     } else {
       this.uiCtx.fillRect(this.healthPos[0], this.healthPos[1], this.health, this.healthDim[1], 5.5);
     };
-    this.drawHPText();
+    this.drawHPText(HP);
   };
 
-  drawHPText(){
+  drawHPText(HP){
     this.uiCtx.font = 'bold 22px "VT323"';
     this.uiCtx.fillStyle = "rgb(72, 72, 72)";
-    this.uiCtx.fillText(
-      "10/10",
-      this.healthPos[0] + 73,
-      this.healthPos[1] - 10
-    );
+    if(HP >= 10){
+      this.uiCtx.fillText(
+        `${HP}/10`,
+        this.healthPos[0] + 73,
+        this.healthPos[1] - 10
+      );
+    } else {
+      this.uiCtx.fillText(
+        `${HP}/10`,
+        this.healthPos[0] + 82,
+        this.healthPos[1] - 10
+      );
+    }
+  }
+
+  drawStatsBar(catchCount, escapeCount){
+    let x = this.statsBarPos[0];
+    let y = this.statsBarPos[1];
+    let width = this.statsBarDim[0];
+    let height = this.statsBarDim[1];
+    this.uiCtx.clearRect(x, y, width, height);
+    this.uiCtx.drawImage(
+    this.statsBar, 0, 0, width, height, x, y, width, height);
+    this.uiCtx.beginPath();
+    this.uiCtx.font = 'bold 30px "VT323"';
+    this.uiCtx.fillStyle = "rgb(72, 72, 72)";
+    this.uiCtx.fillText(`Caught: ${catchCount}`, x + 70, y + 50);
+    this.uiCtx.fillText(`Escaped: ${escapeCount}`, x + 70, y + 80);
+    this.uiCtx.fillText(`PPM: ${escapeCount}`, x + 70, y + 110);
+    this.uiCtx.fill();
+    this.uiCtx.closePath();
+
   }
 
   draw(catchCount, escapeCount) {
-    this.uiCtx.clearRect(100, 0, 500, 500);
-    this.uiCtx.beginPath();
-    this.uiCtx.font = 'bold 35px "VT323"';
-    this.uiCtx.fillStyle = "white";
-    this.uiCtx.fillText(
-      `Pokemon Caught: ${catchCount}`,
-      100,
-      50
-    );
-    // if (escapeCount < 7) {
-    //   this.uiCtx.fillStyle = "white";
-    // } else if (escapeCount > 5 && escapeCount < 9) {
-    //   this.uiCtx.fillStyle = "yellow";
-    // } else {
-    //   this.uiCtx.fillStyle = "red";
-    // }
-    this.uiCtx.fillText(
-      `Pokemon Escaped: ${escapeCount}`,
-      100,
-      80
-    );
-    this.uiCtx.fill();
-    this.uiCtx.closePath();
+    // this.uiCtx.clearRect(100, 0, 500, 500);
+    // this.uiCtx.beginPath();
+    // this.uiCtx.font = 'bold 35px "VT323"';
+    // this.uiCtx.fillStyle = "white";
+    // this.uiCtx.fillText(
+    //   `Caught: ${catchCount}`,
+    //   100,
+    //   50
+    // );
+    // this.uiCtx.fillText(
+    //   `Escaped: ${escapeCount}`,
+    //   100,
+    //   80
+    // );
+    // this.uiCtx.fill();
+    // this.uiCtx.closePath();
 
 
     // if (catchCount >= 10) {
