@@ -16,7 +16,7 @@ class GameUI {
     // };
     setTimeout(()=> {
       this.drawHealthBar(null, 10);
-    }, 80);
+    }, 500);
     this.statsBar = new Image();
     this.statsBar.src = "../assets/sprites/statsbar.png";
     this.statsBarPos = [30, 16];
@@ -26,7 +26,7 @@ class GameUI {
     // };
     setTimeout(() => {
       this.drawStatsBar(0, 0, 0);
-    }, 80);
+    }, 500);
   }
 
   missedThrow(pos) {

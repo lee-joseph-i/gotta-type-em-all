@@ -46,7 +46,7 @@ class Game {
     this.ppm;
     setTimeout(() => {
       this.ui.draw(this.catchCount, this.escapeCount);
-    }, 50);
+    }, 500);
     this.grass = [];
     this.pokemon = [];
     this.addGrass();
