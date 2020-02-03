@@ -7,7 +7,7 @@ class Grass {
     this.ctx = ctx;
     this.pos = [pos[0], pos[1]];
     this.grassImg = new Image();
-    this.grassImg.src = "../dist/assets/sprites/tall-grass-adjusted.png";
+    this.grassImg.src = "./assets/sprites/tall-grass-adjusted.png";
   }
 
   draw() {
