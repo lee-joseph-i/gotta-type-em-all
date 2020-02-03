@@ -44,8 +44,9 @@ class Game {
     this.escapeCount = 0;
     this.HP = 10;
     this.ppm;
-    this.ui.draw(this.catchCount, this.escapeCount);
-    // this.ui.drawHealthBar(null, this.HP);
+    setTimeout(() => {
+      this.ui.draw(this.catchCount, this.escapeCount);
+    }, 50);
     this.grass = [];
     this.pokemon = [];
     this.addGrass();
@@ -68,7 +69,13 @@ class Game {
         this.removePokemon(poke);
         this.catchCount += 1;
         notFound = false;
-        this.ui.drawStatsBar(this.catchCount, this.escapeCount, this.ppm);
+        if(this.catchCount === 1){
+          setTimeout( () => {
+           this.ui.drawStatsBar(this.catchCount, this.escapeCount, this.ppm);
+          }, 0);
+        } else {
+          this.ui.drawStatsBar(this.catchCount, this.escapeCount, this.ppm);
+        };
         return true;
       };
     };

@@ -11,16 +11,22 @@ class GameUI {
     this.healthDim = [113.2, 5.5];
     this.health = 113.2;
     this.healthNet = 113.2 / 10;
-    this.healthBar.onload = () => {
+    // this.healthBar.onload = () => {
+    //   this.drawHealthBar(null, 10);
+    // };
+    setTimeout(()=> {
       this.drawHealthBar(null, 10);
-    };
+    }, 80);
     this.statsBar = new Image();
     this.statsBar.src = "../assets/sprites/statsbar.png";
     this.statsBarPos = [30, 16];
     this.statsBarDim = [400, 200];
-    this.statsBar.onload = () => {
+    // this.statsBar.onload = () => {
+    //   this.drawStatsBar(0, 0, 0);
+    // };
+    setTimeout(() => {
       this.drawStatsBar(0, 0, 0);
-    };
+    }, 80);
   }
 
   missedThrow(pos) {
@@ -141,23 +147,7 @@ class GameUI {
     this.uiCtx.closePath();
   }
 
-  draw(catchCount, escapeCount) {
-    // this.uiCtx.clearRect(100, 0, 500, 500);
-    // this.uiCtx.beginPath();
-    // this.uiCtx.font = 'bold 35px "VT323"';
-    // this.uiCtx.fillStyle = "white";
-    // this.uiCtx.fillText(
-    //   `Caught: ${catchCount}`,
-    //   100,
-    //   50
-    // );
-    // this.uiCtx.fillText(
-    //   `Escaped: ${escapeCount}`,
-    //   100,
-    //   80
-    // );
-    // this.uiCtx.fill();
-    // this.uiCtx.closePath();
+  draw() {
     // if (catchCount >= 10) {
     //   this.game.player.health = 10;
     //   clearInterval(window.intervalId);

@@ -72,8 +72,7 @@ class GameView {
         poke.draw();
       });
     }
-
-    if (this.game.catchCount / (this.inputTimer / 60)) {
+    if (this.game.catchCount > 0) {
       this.game.ppm = (
         this.game.catchCount /
         (this.inputTimer / 60)
