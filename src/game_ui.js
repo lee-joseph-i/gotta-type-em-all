@@ -4,10 +4,10 @@ class GameUI {
     this.exclamation = new Image();
     this.exclamation.src = "../assets/sprites/exclamation.png";
     this.healthBar = new Image();
-    this.healthBar.src = "../assets/sprites/hp_edit.png";
+    this.healthBar.src = "../assets/sprites/hpfinal.png";
     this.healthBarPos = [600, 20];
     this.healthBarDim = [569, 215];
-    this.healthPos = [699.5, 59.5];
+    this.healthPos = [699.5, 68.5];
     this.healthDim = [113.2, 5.5];
     this.health = 113.2;
     this.healthNet = 113.2 / 10;
@@ -15,8 +15,8 @@ class GameUI {
       this.drawHealthBar(null, 10);
     };
     this.statsBar = new Image();
-    this.statsBar.src = "../assets/sprites/statsbarfinalfinal.png";
-    this.statsBarPos = [10, 10];
+    this.statsBar.src = "../assets/sprites/statsbar.png";
+    this.statsBarPos = [30, 16];
     this.statsBarDim = [400, 200];
     this.statsBar.onload = () => {
       this.drawStatsBar(0, 0);
@@ -92,21 +92,21 @@ class GameUI {
   };
 
   drawHPText(HP){
-    this.uiCtx.font = 'bold 22px "VT323"';
+    this.uiCtx.font = 'bold 28px "VT323"';
     this.uiCtx.fillStyle = "rgb(72, 72, 72)";
     if(HP >= 10){
       this.uiCtx.fillText(
         `${HP}/10`,
-        this.healthPos[0] + 73,
-        this.healthPos[1] - 10
+        this.healthPos[0] + 59,
+        this.healthPos[1] - 13
       );
     } else {
       this.uiCtx.fillText(
         `${HP}/10`,
-        this.healthPos[0] + 82,
-        this.healthPos[1] - 10
+        this.healthPos[0] + 70,
+        this.healthPos[1] - 13
       );
-    }
+    } 
   }
 
   drawStatsBar(catchCount, escapeCount){
@@ -120,9 +120,9 @@ class GameUI {
     this.uiCtx.beginPath();
     this.uiCtx.font = 'bold 30px "VT323"';
     this.uiCtx.fillStyle = "rgb(72, 72, 72)";
-    this.uiCtx.fillText(`Caught: ${catchCount}`, x + 70, y + 50);
-    this.uiCtx.fillText(`Escaped: ${escapeCount}`, x + 70, y + 80);
-    this.uiCtx.fillText(`PPM: ${escapeCount}`, x + 70, y + 110);
+    this.uiCtx.fillText(`Caught: ${catchCount}`, x + 70, y + 47);
+    this.uiCtx.fillText(`Escaped: ${escapeCount}`, x + 70, y + 77);
+    this.uiCtx.fillText(`PPM: ${escapeCount}`, x + 70, y + 107);
     this.uiCtx.fill();
     this.uiCtx.closePath();
 
