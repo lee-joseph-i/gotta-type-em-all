@@ -1,0 +1,5 @@
+#game-ui-canvas{
+  position: fixed;
+  z-index: 3;
+}
+
