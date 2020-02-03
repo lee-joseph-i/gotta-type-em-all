@@ -6,7 +6,7 @@ class GameUI {
     this.healthBar = new Image();
     this.healthBar.src = "../assets/sprites/hpfinal.png";
     this.healthBarPos = [600, 20];
-    this.healthBarDim = [569, 215];
+    this.healthBarDim = [493, 152];
     this.healthPos = [699.5, 68.5];
     this.healthDim = [113.2, 5.5];
     this.health = 113.2;
@@ -20,7 +20,7 @@ class GameUI {
     this.statsBar = new Image();
     this.statsBar.src = "../assets/sprites/statsbar.png";
     this.statsBarPos = [30, 16];
-    this.statsBarDim = [400, 200];
+    this.statsBarDim = [252, 151];
     // this.statsBar.onload = () => {
     //   this.drawStatsBar(0, 0, 0);
     // };
@@ -43,7 +43,7 @@ class GameUI {
     );
     setTimeout(() => {
       this.uiCtx.clearRect(pos[0] + 90, pos[1] - 25, 131, 132);
-    }, 600);
+    }, 650);
   }
 
   drawHealthBar(net, HP) {
@@ -51,7 +51,7 @@ class GameUI {
       this.healthBarPos[0],
       this.healthBarPos[1],
       this.healthBarDim[0],
-      this.healthBarDim[1]
+      this.healthBarDim[1] - 70
     );
     this.uiCtx.drawImage(
       this.healthBar,
