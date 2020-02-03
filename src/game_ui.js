@@ -2,9 +2,9 @@ class GameUI {
   constructor(uiCtx) {
     this.uiCtx = uiCtx;
     this.exclamation = new Image();
-    this.exclamation.src = "../assets/sprites/exclamation.png";
+    this.exclamation.src = "../dist/assets/sprites/exclamation.png";
     this.healthBar = new Image();
-    this.healthBar.src = "../assets/sprites/hpfinal.png";
+    this.healthBar.src = "../dist/assets/sprites/hpfinal.png";
     this.healthBarPos = [600, 20];
     this.healthBarDim = [493, 152];
     this.healthPos = [699.5, 68.5];
@@ -18,7 +18,7 @@ class GameUI {
       this.drawHealthBar(null, 10);
     }, 500);
     this.statsBar = new Image();
-    this.statsBar.src = "../assets/sprites/statsbar.png";
+    this.statsBar.src = "../dist/assets/sprites/statsbar.png";
     this.statsBarPos = [30, 16];
     this.statsBarDim = [252, 151];
     // this.statsBar.onload = () => {
