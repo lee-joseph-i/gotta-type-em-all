@@ -90,7 +90,18 @@ class Game {
     this.escapeCount += 1;
     this.ui.drawStatsBar(this.catchCount, this.escapeCount, this.ppm);
     this.ui.drawHealthBar("negative", this.HP);
+    this.isOver();
     // this.ui.drawHPText(this.HP);
+  };
+
+  isOver(){
+    if(this.HP <= 0){
+      this.gameOver();
+    }
+  }
+
+  gameOver(){
+    this.pokemon = [];
   };
 
   addGrass() {

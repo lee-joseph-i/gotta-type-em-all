@@ -17,7 +17,7 @@ class GameView {
     this.inputTimer = 0;
     this.typeStart = 0;
     this.typeEnd = 0;
-    this.gameOver = false;
+    // this.gameOver = false;
 
     // this.game.ui.draw(this.wildCount, this.catchCount);
   }
@@ -45,15 +45,15 @@ class GameView {
     requestAnimationFrame(this.animateGame.bind(this));
   }
 
-  gameOver() {
-    if (this.player.health <= 0) {
-      this.player.health = 0;
-      this.player.drawHealth();
-      clearInterval(window.intervalId);
-      cancelAnimationFrame(request);
-      this.gameOver();
-    }
-  }
+  // gameOver() {
+  //   if (this.player.health <= 0) {
+  //     this.player.health = 0;
+  //     this.player.drawHealth();
+  //     clearInterval(window.intervalId);
+  //     cancelAnimationFrame(request);
+  //     this.gameOver();
+  //   }
+  // }
 
   animateGame() {
     requestAnimationFrame(this.animateGame.bind(this));
