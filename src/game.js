@@ -119,7 +119,7 @@ class Game {
 
   addPokemon() {
     let allPositions = POSITIONS.length;
-    let timer = Math.floor(Math.random() * 200) + 100;
+    let timer = Math.floor(Math.random() * 2500) + 100;
     let spawnPoke = setTimeout(() => {
       if (POSITIONS.length > 0) {
         let poke = this.generatePoke();
