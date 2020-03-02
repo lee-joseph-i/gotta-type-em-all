@@ -17,7 +17,7 @@ class GameView {
     this.inputTimer = 0;
     this.typeStart = 0;
     this.typeEnd = 0;
-    // this.gameOver = false;
+    this.gameOver = false;
 
     // this.game.ui.draw(this.wildCount, this.catchCount);
   }
@@ -60,27 +60,30 @@ class GameView {
     this.input.addEventListener("input", this.startTimer);
     this.gameNow = Date.now();
     this.gameDelta = this.gameNow - this.gameThen;
-    if (this.gameDelta > this.gameInterval) {
-      this.gameThen = this.gameNow - (this.gameDelta % this.gameInterval);
-      this.gameCtx.clearRect(20, 100, 810, 550);
-      this.game.trainer.cycle++;
-      this.game.trainer.draw();
-      this.game.grass.forEach(grass => {
-        grass.draw();
-      });
-      this.game.pokemon.forEach(poke => {
-        poke.draw();
-      });
+    let that = this;
+    if(!this.game.gameOver){
+      if (that.gameDelta > that.gameInterval) {
+        that.gameThen = that.gameNow - (that.gameDelta % that.gameInterval);
+        that.gameCtx.clearRect(20, 100, 810, 550);
+        that.game.trainer.cycle++;
+        that.game.trainer.draw();
+        that.game.grass.forEach(grass => {
+          grass.draw();
+        });
+        that.game.pokemon.forEach(poke => {
+          poke.draw();
+        });
+      }
+      if (that.game.catchCount > 0) {
+        that.game.ppm = (
+          that.game.catchCount /
+          (that.inputTimer / 60)
+          ).toFixed(0);
+      } else {
+        that.game.ppm = 0;
+      };
+      that.game.ui.drawPPM(that.game.ppm);
     }
-    if (this.game.catchCount > 0) {
-      this.game.ppm = (
-        this.game.catchCount /
-        (this.inputTimer / 60)
-        ).toFixed(0);
-    } else {
-      this.game.ppm = 0;
-    };
-    this.game.ui.drawPPM(this.game.ppm);
   };
 
   startTimer(e) {

@@ -52,6 +52,7 @@ class Game {
     this.addGrass();
     this.addPokemon();
     this.trainer = this.addTrainer();
+    this.gameOver = false;
   };
 
   addUi() {
@@ -96,12 +97,21 @@ class Game {
 
   isOver(){
     if(this.HP <= 0){
-      this.gameOver();
+      this.gameOver = true;
+      this.endGame();
     }
   }
 
-  gameOver(){
-    this.pokemon = [];
+  endGame(){
+    // add logic to freeze the game state
+    let pokemon = this.pokemon;
+    for(let i=0; i<pokemon.length; i++){
+      let poke = pokemon[i];
+      clearTimeout(poke.escapeTimer);
+    };
+    pokemon = [];
+    clearTimeout(this.addPokemon.spawnPoke);
+    POSITIONS = []
   };
 
   addGrass() {
