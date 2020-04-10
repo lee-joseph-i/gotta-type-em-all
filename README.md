@@ -1,7 +1,6 @@
 # Gotta-Type-em-All!
 [Gotta-Type-em-All live link!](https://lee-joseph-i.github.io/gotta-type-em-all/)</br>
 ![demo-gif](https://im4.ezgif.com/tmp/ezgif-4-6806f6be19a1.gif)
-<!-- ![In-game screenshot](https://i.ibb.co/pxKk4xd/screenshot.png) -->
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -19,6 +18,8 @@ Gotta-Type-em-All! is purely a frontend project and currently does not have back
 
 **Frontend** <br/> 
 Gotta-Type-em-All! is coded primarily in JavaScript and runs on a game loop of 60 frames per seconds using requestAnimationFrames. Multiple layers of HTML5 Canvas renders the game with all objects or classes (Pokemon sprites, UI elements). CSS is applied to position and style UI elements including the input type field.
+
+![In-game screenshot](https://i.ibb.co/pxKk4xd/screenshot.png)
 
 ## Future Direction
 * Add home screen with a Start button and How to Play elements.
