@@ -1,6 +1,7 @@
 # Gotta-Type-em-All!
 [Gotta-Type-em-All live link!](https://lee-joseph-i.github.io/gotta-type-em-all/)</br>
-![In-game screenshot](https://i.ibb.co/pxKk4xd/screenshot.png)
+![demo-gif](https://im4.ezgif.com/tmp/ezgif-4-6806f6be19a1.gif)
+<!-- ![In-game screenshot](https://i.ibb.co/pxKk4xd/screenshot.png) -->
 
 ## Table of Contents
 1. [Introduction](#introduction)
