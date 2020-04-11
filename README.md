@@ -13,10 +13,6 @@ Gotta-Type-em-All! is a Pokemon-themed typing game built from scratch with Canva
 
 ## Technologies
 
-**Backend** <br/> 
-Gotta-Type-em-All! is purely a frontend project and currently does not have backend systems.
-
-**Frontend** <br/> 
 Gotta-Type-em-All! is coded primarily in JavaScript and runs on a game loop of 60 frames per seconds using requestAnimationFrames. Multiple layers of HTML5 Canvas renders the game with all objects or classes (Pokemon sprites, UI elements). CSS is applied to position and style UI elements including the input type field.
 
 ![In-game screenshot](https://i.ibb.co/pxKk4xd/screenshot.png)
