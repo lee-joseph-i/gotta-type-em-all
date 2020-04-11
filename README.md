@@ -4,7 +4,7 @@
 
 ## Table of Contents
 1. [Introduction](#introduction)
-2. [Technologies and Features](#technologies)
+2. [Technologies and Features](#technologies-and-features)
 3. [Future Direction](#future-direction)
 
 ## Introduction
