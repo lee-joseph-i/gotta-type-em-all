@@ -1,6 +1,6 @@
 # Gotta-Type-em-All!
 [Gotta-Type-em-All live link!](https://lee-joseph-i.github.io/gotta-type-em-all/)</br>
-![demo-gif](https://im4.ezgif.com/tmp/ezgif-4-6806f6be19a1.gif)
+![demogif](https://user-images.githubusercontent.com/39147326/79031105-7db80200-7b51-11ea-834d-aac3da789233.gif)
 
 ## Table of Contents
 1. [Introduction](#introduction)
