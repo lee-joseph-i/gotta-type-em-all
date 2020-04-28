@@ -94,5 +94,3 @@ class GameView {
 };
 
 export default GameView;
-
-//start coding! motivational comment! lol.
